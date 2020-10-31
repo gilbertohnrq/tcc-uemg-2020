@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "131475767790",
+    "firebase_url": "https://ezj-app-993da.firebaseio.com",
+    "project_id": "ezj-app-993da",
+    "storage_bucket": "ezj-app-993da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131475767790:android:fa9783d896e95a1538ceff",
+        "android_client_info": {
+          "package_name": "com.example.ezj_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131475767790-ml16hfrk82brvne8cl7932edhh2ao9vn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ezj_app",
+            "certificate_hash": "12b70d93167523a925c4ae8ebc8526db8d99217d"
+          }
+        },
+        {
+          "client_id": "131475767790-6nvt5iqi64i3jdul6ho7a14il81fjg31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLDdiAAqKR_p3AMdgmPfhIfVubBQEu1dE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131475767790-6nvt5iqi64i3jdul6ho7a14il81fjg31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
