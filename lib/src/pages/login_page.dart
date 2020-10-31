@@ -2,10 +2,32 @@ import 'package:ezj_app/src/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ezj_app/src/helpers/app_config.dart' as config;
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import 'home_page.dart';
 
 // import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatelessWidget {
+  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+
+  bool _isLoggedIn = false.obs();
+
+  _login() async {
+    try {
+      await _googleSignIn.signIn();
+      _isLoggedIn = true;
+      Get.to(HomePage());
+    } catch (err) {
+      print(err);
+    }
+  }
+
+  _logout() {
+    _googleSignIn.signOut();
+    _isLoggedIn = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,7 +141,9 @@ class LoginPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _logout();
+                  },
                   textColor: config.Colors().mainColor(),
                   child: Text("Esqueceu sua senha?"),
                 ),
@@ -138,7 +162,9 @@ class LoginPage extends StatelessWidget {
             child: OutlineButton(
               color: Colors.white,
               splashColor: Colors.grey,
-              onPressed: () {},
+              onPressed: () {
+                _login();
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(40)),
               borderSide: BorderSide(color: Colors.grey),
