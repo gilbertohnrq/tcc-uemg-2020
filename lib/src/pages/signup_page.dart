@@ -1,8 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:ezj_app/src/helpers/app_config.dart' as config;
+import 'package:ezj_app/src/utils/app_config.dart' as config;
 import 'package:get/get.dart';
 
 class SignUpPage extends StatelessWidget {
+  Widget _buildTextField(
+      {String labelText,
+      bool obscureText,
+      TextInputType keyboardType,
+      String hintText,
+      Widget prefixIcon}) {
+    return TextFormField(
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        labelText: labelText,
+        labelStyle: TextStyle(color: config.Colors().mainColor()),
+        border: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(30)),
+        fillColor: Colors.white,
+        filled: true,
+        hintText: hintText,
+        hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
+        prefixIcon: prefixIcon,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -40,83 +64,45 @@ class SignUpPage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 30),
-                TextFormField(
+                _buildTextField(
                   keyboardType: TextInputType.name,
                   obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: "Nome",
-                    labelStyle: TextStyle(color: config.Colors().mainColor()),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(30)),
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Digite sua nome",
-                    hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
-                    prefixIcon: Icon(
-                      Icons.person,
-                      color: config.Colors().mainColor(),
-                    ),
-                  ),
+                  labelText: "Nome",
+                  hintText: "Digite seu nome",
+                  prefixIcon:
+                      Icon(Icons.person, color: config.Colors().mainColor()),
                 ),
                 SizedBox(height: 30),
-                TextFormField(
+                _buildTextField(
                   keyboardType: TextInputType.emailAddress,
                   obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: "E-mail",
-                    labelStyle: TextStyle(color: config.Colors().mainColor()),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(30)),
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Digite seu e-mail",
-                    hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
-                    prefixIcon: Icon(
-                      Icons.mail,
-                      color: config.Colors().mainColor(),
-                    ),
+                  labelText: "E-mail",
+                  hintText: "Digite seu e-mail",
+                  prefixIcon: Icon(
+                    Icons.mail,
+                    color: config.Colors().mainColor(),
                   ),
                 ),
                 SizedBox(height: 30),
-                TextFormField(
+                _buildTextField(
                   keyboardType: TextInputType.phone,
                   obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: "Telefone",
-                    labelStyle: TextStyle(color: config.Colors().mainColor()),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(30)),
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Digite seu telefone",
-                    hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
-                    prefixIcon: Icon(
-                      Icons.phone,
-                      color: config.Colors().mainColor(),
-                    ),
+                  labelText: "Telefone",
+                  hintText: "Digite seu telefone",
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: config.Colors().mainColor(),
                   ),
                 ),
                 SizedBox(height: 30),
-                TextFormField(
+                _buildTextField(
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: "Senha",
-                    labelStyle: TextStyle(color: config.Colors().mainColor()),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(30)),
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Digite sua senha",
-                    hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: config.Colors().mainColor(),
-                    ),
+                  labelText: "Senha",
+                  hintText: "Digite sua senha",
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: config.Colors().mainColor(),
                   ),
                 ),
                 SizedBox(height: 40),
