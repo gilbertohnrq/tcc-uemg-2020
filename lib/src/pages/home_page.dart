@@ -35,36 +35,86 @@ class HomePage extends StatelessWidget {
         backgroundColor: config.Colors().mainColor(),
       ),
       body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height * 0.6,
-          child: new TinderSwapCard(
-            swipeUp: false,
-            swipeDown: false,
-            orientation: AmassOrientation.BOTTOM,
-            totalNum: testeImages.length,
-            stackNum: 3,
-            swipeEdge: 4.0,
-            maxWidth: MediaQuery.of(context).size.width * 0.9,
-            maxHeight: MediaQuery.of(context).size.width * 0.9,
-            minWidth: MediaQuery.of(context).size.width * 0.8,
-            minHeight: MediaQuery.of(context).size.width * 0.8,
-            cardBuilder: (context, index) => Card(
-              child: Image.network('${testeImages[index]}'),
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: TinderSwapCard(
+                swipeUp: false,
+                swipeDown: false,
+                orientation: AmassOrientation.BOTTOM,
+                totalNum: testeImages.length,
+                stackNum: 3,
+                swipeEdge: 4.0,
+                maxWidth: MediaQuery.of(context).size.width * 0.9,
+                maxHeight: MediaQuery.of(context).size.width * 0.9,
+                minWidth: MediaQuery.of(context).size.width * 0.8,
+                minHeight: MediaQuery.of(context).size.width * 0.8,
+                cardBuilder: (context, index) => Card(
+                  child: Image.network('${testeImages[index]}'),
+                ),
+                cardController: controller = CardController(),
+                swipeUpdateCallback:
+                    (DragUpdateDetails details, Alignment align) {
+                  /// Get swiping card's alignment
+                  if (align.x < 0) {
+                    //Card is LEFT swiping
+                    print("JOGANDO PRA ESQUERDA");
+                  } else if (align.x > 0) {
+                    //Card is RIGHT swiping
+                    print("JOGANDO PRA DIREITA");
+                  }
+                },
+                swipeCompleteCallback:
+                    (CardSwipeOrientation orientation, int index) {
+                  print("Dentro do complete");
+
+                  /// Get orientation & index of swiped card!
+                },
+              ),
             ),
-            cardController: controller = CardController(),
-            swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
-              /// Get swiping card's alignment
-              if (align.x < 0) {
-                //Card is LEFT swiping
-              } else if (align.x > 0) {
-                //Card is RIGHT swiping
-              }
-            },
-            swipeCompleteCallback:
-                (CardSwipeOrientation orientation, int index) {
-              /// Get orientation & index of swiped card!
-            },
-          ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    child: FlatButton(
+                      onPressed: () {},
+                      padding: EdgeInsets.zero,
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.green,
+                        size: 30,
+                      ),
+                      color: Colors.grey[300],
+                    ),
+                  ),
+                ),
+                SizedBox(width: 60),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    child: FlatButton(
+                      onPressed: () {},
+                      padding: EdgeInsets.zero,
+                      child: Icon(
+                        Icons.block,
+                        color: Colors.red,
+                        size: 30,
+                      ),
+                      color: Colors.grey[300],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ],
         ),
       ),
       drawer: Drawer(
