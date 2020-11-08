@@ -6,11 +6,21 @@ import 'package:ezj_app/src/pages/login_page.dart';
 import 'package:ezj_app/src/controllers/firebase_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:ezj_app/src/utils/app_config.dart' as config;
+import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
+  List<String> testeImages = [
+    "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+    "https://homepages.cae.wisc.edu/~ece533/images/boat.png",
+    "https://homepages.cae.wisc.edu/~ece533/images/barbara.png",
+    "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+    "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png"
+  ];
+
   @override
   Widget build(BuildContext context) {
+    CardController controller;
     return Scaffold(
       appBar: AppBar(
         title: CachedNetworkImage(
@@ -23,6 +33,39 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: config.Colors().mainColor(),
+      ),
+      body: Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.6,
+          child: new TinderSwapCard(
+            swipeUp: false,
+            swipeDown: false,
+            orientation: AmassOrientation.BOTTOM,
+            totalNum: testeImages.length,
+            stackNum: 3,
+            swipeEdge: 4.0,
+            maxWidth: MediaQuery.of(context).size.width * 0.9,
+            maxHeight: MediaQuery.of(context).size.width * 0.9,
+            minWidth: MediaQuery.of(context).size.width * 0.8,
+            minHeight: MediaQuery.of(context).size.width * 0.8,
+            cardBuilder: (context, index) => Card(
+              child: Image.network('${testeImages[index]}'),
+            ),
+            cardController: controller = CardController(),
+            swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
+              /// Get swiping card's alignment
+              if (align.x < 0) {
+                //Card is LEFT swiping
+              } else if (align.x > 0) {
+                //Card is RIGHT swiping
+              }
+            },
+            swipeCompleteCallback:
+                (CardSwipeOrientation orientation, int index) {
+              /// Get orientation & index of swiped card!
+            },
+          ),
+        ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -45,12 +88,6 @@ class HomePage extends StatelessWidget {
                   backgroundImage: imageProvider,
                 ),
               ),
-              // CircleAvatar(
-              //   radius: 30.0,
-              //   backgroundImage: CachedNetworkImageProvider(
-              //       "${HomeController.to.currentUser.profilePhoto}",),
-              //   backgroundColor: Colors.transparent,
-              // ),
             ),
             ListTile(
               leading: Icon(
