@@ -139,14 +139,14 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
-              leading: Icon(
-                Icons.edit,
-              ),
-              title: Text(
-                "Editar Perfil",
-              ),
-            ),
+            // ListTile(
+            //   leading: Icon(
+            //     Icons.edit,
+            //   ),
+            //   title: Text(
+            //     "Editar Perfil",
+            //   ),
+            // ),
             ListTile(
               onTap: () async {
                 await FirebaseController.to.signOut();

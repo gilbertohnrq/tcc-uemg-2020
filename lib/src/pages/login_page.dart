@@ -118,16 +118,6 @@ class LoginPage extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        FlatButton(
-                          onPressed: () {
-                            
-                          },
-                          shape: StadiumBorder(),
-                          textColor: config.Colors().backgroundColor(),
-                          child: Text("Pular"),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 14),
-                        ),
                       ]),
                 ),
               ),

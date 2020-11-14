@@ -9,20 +9,23 @@ class SignUpPage extends StatelessWidget {
       TextInputType keyboardType,
       String hintText,
       Widget prefixIcon}) {
-    return TextFormField(
-      keyboardType: keyboardType,
-      obscureText: obscureText,
-      decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: TextStyle(color: config.Colors().mainColor()),
-        border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(30)),
-        fillColor: Colors.white,
-        filled: true,
-        hintText: hintText,
-        hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
-        prefixIcon: prefixIcon,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        keyboardType: keyboardType,
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          labelText: labelText,
+          labelStyle: TextStyle(color: config.Colors().mainColor()),
+          border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(30)),
+          fillColor: config.Colors().backgroundColor(),
+          filled: true,
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.grey.withOpacity(0.8)),
+          prefixIcon: prefixIcon,
+        ),
       ),
     );
   }
@@ -60,10 +63,24 @@ class SignUpPage extends StatelessWidget {
           title: Text("Cadastre-se no App"),
         ),
         body: Container(
+          height: 600,
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          decoration: BoxDecoration(
+            color: config.Colors().mainColor(),
+            boxShadow: [
+              BoxShadow(blurRadius: 10),
+            ],
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Form(
             child: Column(
               children: [
-                SizedBox(height: 30),
+                SizedBox(height: 10),
+                Image.network(
+                  "https://leanfrontiers.com/wp-content/uploads/2018/12/logo-placeholder-png.png",
+                  width: MediaQuery.of(context).size.width * 0.30,
+                ),
+                SizedBox(height: 10),
                 _buildTextField(
                   keyboardType: TextInputType.name,
                   obscureText: false,
