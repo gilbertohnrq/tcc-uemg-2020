@@ -37,4 +37,10 @@ class FirebaseRepository {
     await _auth.signOut();
     print("##################### USUÁRIO DESLOGADO");
   }
+
+  auth.User getCurrentUser() {
+    auth.User currentUser;
+    currentUser = _auth.currentUser;
+    return currentUser;
+  }
 }

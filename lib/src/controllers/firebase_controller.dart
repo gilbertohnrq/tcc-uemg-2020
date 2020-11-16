@@ -12,5 +12,7 @@ class FirebaseController {
   Future<bool> authenticateUser(auth.UserCredential user) =>
       _firebaseRepository.authenticateUser(user);
 
+  auth.User getCurrentUser() => _firebaseRepository.getCurrentUser();
+
   Future signOut() => _firebaseRepository.signOut();
 }

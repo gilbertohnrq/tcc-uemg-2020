@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<FirebaseController>(() => FirebaseController());
-    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository());
+    Get.lazyPut<FirebaseController>(() => FirebaseController(), fenix: true);
+    Get.lazyPut<FirebaseRepository>(() => FirebaseRepository(), fenix: true);
     Get.lazyPut<UserRepository>(() => UserRepository(), fenix: true);
     Get.lazyPut<HasuraSettings>(() => HasuraSettings(), fenix: true);
     Get.lazyPut<HomeController>(() => HomeController(), fenix: true);
